@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Widget Test Page</title>
+    <style>
+      body {
+        background-color: #dedede; /* Using hex color */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My awesome website</h1>
+    <p>This page tests the widget integration.</p>
+
+    <script>
+      const dynamicUser = Math.random().toString(36).slice(2);
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'http://127.0.0.1:3334/widget.js';
+      s.dataset.publicToken = 'KLvzybFgcwkgtWLfCYI3HOlHACDFeWFjuT4EWHpvfDA';
+      s.dataset.externalId = `user-${dynamicUser}`;
+      s.dataset.className = 'dark';
+      document.body.appendChild(s);
+    </script>
+  </body>
+</html>
