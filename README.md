@@ -17,7 +17,7 @@ Add this script tag anywhere in your page (usually before `</body>`):
 
 ```html
 <script
-  src="https://cdn.jsdelivr.net/gh/releasysaas/indie-polls-embeddable-widget@1.0.0/dist/widget.js"
+  src="https://cdn.jsdelivr.net/gh/releasysaas/indiepolls-embeddable-widget@main/dist/widget.js"
   defer
   data-public-token="YOUR_PUBLIC_TOKEN"
   data-class-name="dark"
@@ -41,7 +41,7 @@ Example with more options:
 
 ```html
 <script
-  src="https://cdn.jsdelivr.net/gh/releasysaas/indie-polls-embeddable-widget@1.0.0/dist/widget.js"
+  src="https://cdn.jsdelivr.net/gh/releasysaas/indiepolls-embeddable-widget@main/dist/widget.js"
   defer
   data-public-token="YOUR_PUBLIC_TOKEN"
   data-external-id="user-123"
@@ -68,7 +68,7 @@ You can also inject the widget dynamically and assign a random external id at ru
   const dynamicUser = Math.random().toString(36).slice(2);
   const s = document.createElement('script');
   s.async = true;
-  s.src = 'https://cdn.jsdelivr.net/gh/releasysaas/indie-polls-embeddable-widget@1.0.0/dist/widget.js';
+  s.src = 'https://cdn.jsdelivr.net/gh/releasysaas/indiepolls-embeddable-widget@main/dist/widget.js';
   s.dataset.publicToken = 'YOUR_PUBLIC_TOKEN';
   s.dataset.externalId = `user-${dynamicUser}`;
   s.dataset.className = 'dark';

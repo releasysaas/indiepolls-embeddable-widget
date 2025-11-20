@@ -46,7 +46,7 @@ The project is structured as follows:
 To clone the repository, you can use the following command:
 
 ```bash
-git clone https://github.com/releasysaas/indie-polls-embeddable-widget.git
+git clone https://github.com/releasysaas/indiepolls-embeddable-widget.git
 ```
 
 ### Installing Dependencies
