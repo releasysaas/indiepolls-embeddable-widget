@@ -244,6 +244,7 @@ function ContributorStep({
   onSkip,
   onSubmit,
   submitting,
+  error,
 }: {
   email: string;
   name: string;
@@ -253,6 +254,7 @@ function ContributorStep({
   onSkip: () => void;
   onSubmit: () => void;
   submitting: boolean;
+  error: string | null;
 }) {
   return (
     <div className='p-4 space-y-4'>
@@ -311,6 +313,9 @@ function ContributorStep({
           {submitting ? 'Submitting…' : 'Submit'}
         </button>
       </div>
+      {error ? (
+        <div className='text-xs text-danger-600 dark:text-red-300'>{error}</div>
+      ) : null}
     </div>
   );
 }
@@ -472,6 +477,8 @@ export default function PollRunner({ onPollTitle }: { onPollTitle?: (title: stri
       if (typeof err === 'object' && err && 'code' in err && (err as { code?: number }).code === 409) {
         setError('You have already submitted this poll.');
         setIndex(outroIndex);
+      } else if (typeof err === 'object' && err && 'code' in err && (err as { code?: number }).code === 422) {
+        setError((err as Error).message || 'Validation failed.');
       } else {
         setError('Failed to submit.');
       }
@@ -543,6 +550,7 @@ export default function PollRunner({ onPollTitle }: { onPollTitle?: (title: stri
         onSkip={doSubmit}
         onSubmit={doSubmit}
         submitting={submitting}
+        error={error}
       />
     );
   }

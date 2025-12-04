@@ -144,6 +144,32 @@ export class PollsApi {
         code: 409 as const,
       });
     }
+    if (res.status === 422) {
+      let validationMessage = 'Validation failed.';
+      try {
+        const data = (await res.json()) as unknown;
+        const errors = (data as { errors?: Record<string, unknown> })?.errors;
+        if (errors && typeof errors === 'object') {
+          const parts: string[] = [];
+          for (const [field, msgs] of Object.entries(errors)) {
+            if (Array.isArray(msgs) && msgs.length > 0) {
+              const first = String(msgs[0]).trim();
+              if (first) {
+                parts.push(`${field} ${first}`);
+              }
+            }
+          }
+          if (parts.length > 0) {
+            validationMessage = parts.join('; ');
+          }
+        }
+      } catch {
+        // ignore parsing errors, keep default message
+      }
+      throw Object.assign(new Error(validationMessage), {
+        code: 422 as const,
+      });
+    }
     if (!res.ok) {
       const text = await res.text().catch(() => '');
       throw new Error(`Submit failed: ${res.status} ${res.statusText} ${text}`);
