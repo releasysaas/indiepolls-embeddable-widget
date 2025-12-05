@@ -129,6 +129,13 @@ git tag 1.0.0
 git push origin --tags
 ```
 
+## Clearing the cache
+
+To clear the cache on JSDELIVER, go to https://www.jsdelivr.com/tools/purge and purge the following paths:
+
+- `https://cdn.jsdelivr.net/gh/releasysaas/indiepolls-embeddable-widget@main/dist/widget.js`
+- `https://cdn.jsdelivr.net/gh/releasysaas/indiepolls-embeddable-widget@main/dist/widget.css`
+
 ## Contributing
 
 We welcome contributions to this project. If you find a bug or have a suggestion for improvement, please open an issue or submit a pull request.
