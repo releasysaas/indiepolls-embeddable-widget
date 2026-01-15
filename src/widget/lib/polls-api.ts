@@ -30,6 +30,7 @@ export type Poll = {
   show_results_public?: boolean;
   website_domain?: string | null;
   widget_paths: string[];
+  image?: string | null;
   questions: PollQuestion[];
 };
 

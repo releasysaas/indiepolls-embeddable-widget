@@ -127,6 +127,18 @@ function QuestionView({
 function Intro({ poll, onStart }: { poll: Poll; onStart: () => void }) {
   return (
     <div className='p-4 space-y-4'>
+      {poll.title ? (
+        <h2 className='text-xl font-semibold text-slate-900 dark:text-white'>{poll.title}</h2>
+      ) : null}
+      {poll.image ? (
+        <div className='overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800'>
+          <img
+            src={poll.image}
+            alt={poll.title ? `${poll.title} illustration` : 'Poll image'}
+            className='w-full h-48 object-cover'
+          />
+        </div>
+      ) : null}
       {poll.description ? (
         <p className='text-sm text-slate-700 dark:text-slate-200'>{poll.description}</p>
       ) : null}
